@@ -119,6 +119,48 @@ header nav ul .active i{
 header .footer p a{
   color: var(--themeColor);
 }
+
+/*mobile nav toggle*/
+#MenuBtn{
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  font-size: 20px;
+  width: 40px;
+  height:40px;
+  color : white;
+  background-color: var(--themeColor);
+  text-align: center;
+  line-height: 42px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 20%);
+  z-index: 999;
+}
+
+/*Mobile view */
+
+@media only screen and (max-width:1050px){
+  header{
+    left: -300px;
+  }
+  header .footer{
+    left: -300px;
+  }
+  #MenuBtn{
+    display:block;
+  }
+}
+
+/*----header toggle----*/
+.mobile-nav-active header{
+  left: 0;
+
+}
+
+.mobile-nav-active header .footer{
+  left: 0;
+}
+
 /*--- Header End ----*/
 
 
