@@ -394,12 +394,12 @@
 
         <!--right col-->
         <div class="contact-right">
-            <form action="">
+            <form action="#">
 
-              <input type="text" name="name" id="name" placeholder="your name">
-              <input type="email" name="email" id="email" placeholder="xyz@gmail.com">
-              <input type="text" name="subject" id="subject" placeholder="subject">
-              <textarea name = "msg" id="msg" rows="9" placeholder="Your message"></textarea>
+              <input type="text" name="fname" id="fname" placeholder="full name" required>
+              <input type="email" name="email" id="email" placeholder="xyz@gmail.com" required>
+              <input type="text" name="subject" id="subject" placeholder="subject" required>
+              <textarea name = "msg" id="msg" rows="9" placeholder="Your message" required></textarea>
               <input type="submit" value="Send">
             </form>
 
@@ -434,11 +434,18 @@
   <!---Typed JS file (for typing effect)-->
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-  <!---Main js file-->
-<script src="portfolio.js"></script>
-
 <!---Font JS file(icons)-->
 <script src="https://kit.fontawesome.com/aa5f332820.js" crossorigin="anonymous"></script>
   
+<!----Sending emails directly from the client side using JS-->
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+
+<!---Success alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!---Main js file-->
+  <script src="portfolio.js"></script>
+
 </body>
 </html>

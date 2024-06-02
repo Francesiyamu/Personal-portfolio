@@ -869,6 +869,14 @@ border-radius: 20px;
   padding: 30px;
 }
 
+#contact .contact-row .contact-right form .error-txt{
+  font-size: 10px;
+  color:red;
+  text-align: left;
+  margin: -5px 0 10px;
+  display: none;
+}
+
 
 #contact .contact-row .contact-right form input,
 #contact .contact-row .contact-right form textarea{
