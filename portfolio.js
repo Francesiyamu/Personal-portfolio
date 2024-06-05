@@ -11,7 +11,7 @@ MenuBtn.addEventListener('click', function(e) {
 //Typing effect
 
 let typed = new Typed('.auto-input',{
-    strings: ['Front-End Developer!', 'Freelancer!'],
+    strings: ['Front-End Web Developer!', 'Freelancer!'],
     typedspeed: 100,
     backspeed: 100,
     backDelay: 2000,
