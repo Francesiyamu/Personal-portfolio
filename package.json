@@ -1,0 +1,15 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "Elastic Email:\r https://elasticemail.com/",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
