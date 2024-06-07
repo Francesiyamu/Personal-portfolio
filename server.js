@@ -5,13 +5,6 @@ const path = require('path');
 
 //Define routes
 
-/*app.get('/', (req, res) => {
-
-
-  //Send a response
-  res.json("It works!");
-});*/
-
 const router = express.Router();
 
 
@@ -29,5 +22,5 @@ app.use("/", router);
 
 
 app.listen(8080, () =>{
-  console.log("App is starting at port", 8080);
-})
+  console.log("App is starting at port...", 8080);
+}); 
