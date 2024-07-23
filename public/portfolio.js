@@ -47,14 +47,155 @@ let navLinks = document.querySelectorAll('nav ul li a');
 
  /*-----contact form validation-----*/
 
-const form = document.querySelector("form");
-const fullName = document.getElementById("fname");
+const form = document.getElementById("contactForm");
+const fullName = document.getElementById("fullname");
 const email = document.getElementById("email");
 const subject = document.getElementById("subject");
 const message = document.getElementById("msg");
 
 
-//construct the email body using the form values
+// Event aan een element koppelen en formulier valideren
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+
+//Gebruiken van destructuring
+const {value: nameValue} = fullName;
+const {value: emailValue} = email;
+const {value: subjectValue} = subject;
+const {value: messageValue} = message;
+
+
+// Validation
+if(!validateEmail(emailValue)) {
+  alert('Please enter a valid email address. ');
+  return;
+}
+
+//Gebuiken van een constante
+const formData = {
+  name: nameValue,
+  email: emailValue,
+  subject: subjectValue,
+  message : messageValue
+};
+
+//Gebruike van template literals
+console.log(`Form Data: ${JSON.stringify(formData)}`);
+
+//localStorage gebruiken
+localStorage.setItem('formData', JSON.stringify(formData));
+
+//
+try{
+  const response = await fetch('https://jsonplaceholder.typicode.com/post',{
+    method : 'POST',
+    body: JSON.stringify(formData),
+    headers: {
+      'Content-type': 'application/json;',
+    },
+  
+}); 
+const jsonResponse = await response.json();
+console.log('Response:', jsonResponse);
+
+alert('Form has been succesfully submitted!');
+} catch (error) {
+  console.error('Error:', error);
+  alert('There was an error submitting the form.')
+}
+});
+
+
+//Email valideren met een functie
+
+function emailValidatie(email) {
+  const validate = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return validate.test(String(email).toLowerCase());
+}
+
+//Gebruik van self executing functies
+(function() {
+  console.log('Formrequest has been loaded');
+})();
+
+
+//Gebruik maken van function en Arrow functie
+
+const logformData = () => {
+  const formData = JSON.parse(localStorage.getItem('formData'));
+  if(formData) {
+    console.log('Stored information:', formData);
+  }
+};
+
+//Gebruik maken van consumer methods: .map()
+const inputBox =  [fullName, email, subject, message];
+inputBox.map(box => box.addEventListener('input', logformData));
+
+
+//Gebruik maken van spread operator
+const allFields = [...document.querySelectorAll('input, textarea')];
+console.log('All fields', allFields);
+
+
+//JSON manipuleren en weergeven
+const storedDataDisplay = () =>{
+  const dataStored =  JSON.parse(localStorage.getItem('formData'));
+  if (dataStored) {
+    console.log('Stored Data:', dataStored)
+  }
+};
+
+storedDataDisplay();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*construct the email body using the form values
  function sendEmail() {
   const bodyMessage = `
   Full name: ${fname.value}<br>
@@ -104,4 +245,4 @@ const message = document.getElementById("msg");
  });
 
 
-
+*/
