@@ -47,107 +47,72 @@ let navLinks = document.querySelectorAll('nav ul li a');
 
  /*-----contact form validation-----*/
 
+ //Elementen selecteren
 const form = document.getElementById("contactForm");
-const fullName = document.getElementById("fullname");
-const email = document.getElementById("email");
-const subject = document.getElementById("subject");
-const message = document.getElementById("msg");
+const inputs = Array.from(form.querySelectorAll('input, textarea'));
+
+// Callback function for submission
+const submitHandle = (event) =>{
+  event.preventDefault();
 
 
-// Event aan een element koppelen en formulier valideren
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+
+//Gebruik maken van destructuring en manipuleren van elementen
+const [fullname, email, subject, msg] = inputs.map(input => input.value)
 
 
-//Gebruiken van destructuring
-const {value: nameValue} = fullName;
-const {value: emailValue} = email;
-const {value: subjectValue} = subject;
-const {value: messageValue} = message;
+//Formulier valideren 
+if(fullname && email && subject && msg) {
+
+  //Gebruiken van eenn constante
+  const dataForm = {
+    fullname, email, subject, msg
+  };
+
+///Gebruiken van template literals
+console.log(`Form Data: ${JSON.stringify(dataForm, null, 2)}`);
 
 
-// Validation
-if(!validateEmail(emailValue)) {
-  alert('Please enter a valid email address. ');
-  return;
+//Gebruik maken van localstorage
+localStorage.setItem('contactFormData', JSON.stringify(dataForm));
+
+//Form wissen of restten
+form.reset();
+
+//Data halen en weergeven foor te fetchen
+
+fetchAndDIsplayData();
+} else{
+  alert('Please fill out all required fields.');
 }
 
-//Gebuiken van een constante
-const formData = {
-  name: nameValue,
-  email: emailValue,
-  subject: subjectValue,
-  message : messageValue
 };
 
-//Gebruike van template literals
-console.log(`Form Data: ${JSON.stringify(formData)}`);
 
-//localStorage gebruiken
-localStorage.setItem('formData', JSON.stringify(formData));
 
-//
-try{
-  const response = await fetch('https://jsonplaceholder.typicode.com/post',{
-    method : 'POST',
-    body: JSON.stringify(formData),
-    headers: {
-      'Content-type': 'application/json;',
-    },
+//Event aan een element koppelen
+form.addEventListener('submit', submitHandle);
+
+//Async & Await, Fetch, JSON manipuleren en weergeven
+
+async function fetchAndDIsplayData(){
+  try{
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+
+    const fecthedData =  await response.json();
+
+    console.log('Fetched Data:', fecthedData);
+  } catch(error) {
+    console.error('An error had been identied during data fetch:', error);
+  }
+}
   
-}); 
-const jsonResponse = await response.json();
-console.log('Response:', jsonResponse);
-
-alert('Form has been succesfully submitted!');
-} catch (error) {
-  console.error('Error:', error);
-  alert('There was an error submitting the form.')
-}
-});
-
-
-//Email valideren met een functie
-
-function emailValidatie(email) {
-  const validate = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return validate.test(String(email).toLowerCase());
-}
-
-//Gebruik van self executing functies
-(function() {
-  console.log('Formrequest has been loaded');
+//Self executing function
+(function () {
+  console.log('This self executing function is being executed');
 })();
 
 
-//Gebruik maken van function en Arrow functie
-
-const logformData = () => {
-  const formData = JSON.parse(localStorage.getItem('formData'));
-  if(formData) {
-    console.log('Stored information:', formData);
-  }
-};
-
-//Gebruik maken van consumer methods: .map()
-const inputBox =  [fullName, email, subject, message];
-inputBox.map(box => box.addEventListener('input', logformData));
-
-
-//Gebruik maken van spread operator
-const allFields = [...document.querySelectorAll('input, textarea')];
-console.log('All fields', allFields);
-
-
-//JSON manipuleren en weergeven
-const storedDataDisplay = () =>{
-  const dataStored =  JSON.parse(localStorage.getItem('formData'));
-  if (dataStored) {
-    console.log('Stored Data:', dataStored)
-  }
-};
-
-storedDataDisplay();
 
 
 
