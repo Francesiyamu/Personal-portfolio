@@ -25,7 +25,7 @@ let typed = new Typed('.auto-input',{
 
 let navLinks = document.querySelectorAll('nav ul li a');
  //Get all Sections
- let sections = document.querySelectorAll('section')
+ let sections = document.querySelectorAll('section');
 
 
  window.addEventListener('scroll', function(){
@@ -58,7 +58,7 @@ const submitHandle = (event) =>{
 
 
 //Gebruik maken van destructuring en manipuleren van elementen
-const [fullname, email, subject, msg] = inputs.map(input => input.value)
+const [fullname, email, subject, msg] = inputs.map(input => input.value);
 
 
 //Formulier valideren 
@@ -76,14 +76,14 @@ console.log(`Form Data: ${JSON.stringify(dataForm, null, 2)}`);
 //Gebruik maken van localstorage
 localStorage.setItem('contactFormData', JSON.stringify(dataForm));
 
-//Form wissen of restten
+//Form wissen of resetten
 form.reset();
 
-//Data halen en weergeven foor te fetchen
+//Data halen en weergeven voor te fetchen
 
 fetchAndDIsplayData();
 } else{
-  alert('Please fill out all required fields.');
+  alert('You are required to fill all fields.');
 }
 
 };
