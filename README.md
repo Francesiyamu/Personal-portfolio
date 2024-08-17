@@ -65,7 +65,7 @@ De `fetch` aanroep in `fetchAndDisplayDat` stuurt een `promis terug`, die verder
 
 
 # Self executing function
-`(function () {console.log('This self executing function is being executed');})()`; is een self-exucuting function die onmiddelijk na definitie wordt uitgevoerd.
+`(function () {console.log('This self executing function is being executed');})()`; is een self-exucuting function die onmiddelijk na definitie wordt uitgevoerd. Eigenlijk heeft deze code geen doel in deze code dan te tonen dat ik het wel kan toepassen. Wat wil zeggen dat de functionaliteit van het formulier en de rest van de code nog steeds gaan werken zonde de 'self-executing function'
 
 
 
