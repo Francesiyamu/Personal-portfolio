@@ -101,7 +101,7 @@ async function fetchAndDIsplayData(){
 
     const fecthedData =  await response.json();
 
-    console.log('Fetched Data:', fecthedData);
+    console.log('Fetched Data:', fecthedData); 
   } catch(error) {
     console.error('An error had been identied during data fetch:', error);
   }

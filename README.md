@@ -51,7 +51,7 @@ Hier werd er geberuikt gemaakt van high order arrays:
 
 
 # Promise
-De `fetch` aanroep in `fetchAndDisplayDat` stuurt een `promis terug`, die verder wordt afgehandeld met `async/await`;
+De `fetch` aanroep in `fetchAndDisplayData` stuurt een `promise terug`, die verder wordt afgehandeld met `async/await`;
 
 
 # Consumer methods
@@ -70,7 +70,7 @@ De `fetch` aanroep in `fetchAndDisplayDat` stuurt een `promis terug`, die verder
 
 
 # Fetch om data op te halen
-`const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');` haalt de data op van de externe API met `fecth`.
+`const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');` haalt de data op van de externe API met `fetch`.
 
 
 
